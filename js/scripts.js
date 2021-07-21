@@ -64,3 +64,6 @@ btnShowNum.addEventListener('click',(e)=>{
    let num = Number(outNum.textContent);  
     showNumber(num,ouputUl);
 });
+
+
+
