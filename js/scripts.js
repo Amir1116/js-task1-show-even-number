@@ -6,7 +6,7 @@ const btnShowNum = document.querySelector('.show-number');
 const ouputUl = document.querySelector('.output__ul');
 const outNum = document.querySelector('.number-out');
 const numDescription = document.querySelector('.number-description');
-console.log(btnGetNum,btnShowNum);
+
 
 
 
@@ -14,7 +14,7 @@ console.log(btnGetNum,btnShowNum);
 
 function getNumber(){    
     const number = prompt('enter number', 'number 0-10');
-    if((/^[0-9]|10$/).test(number)&&(+number>=0&&+number<=10)){
+    if((/^[0-9]+$/).test(number)&&(+number>=0&&+number<=Number.MAX_SAFE_INTEGER)){
             elementText(number,'You Number!')
     }else{
         alert('number is not valid!');
@@ -37,6 +37,7 @@ function showNumber(n,el){
         }       
     }
     el.appendChild(fr);
+    showLoader(loader,el)
 }
 
 function createLi(n,el){
@@ -51,16 +52,15 @@ function btnDisable(btn1,btn2){
     btn2.disabled = false;
 }
 
+
 btnGetNum.addEventListener('click',(e)=>{
-    // e.target.disabled = true;
-    // btnShowNum.disabled = false;
+   
     btnDisable(e.target, btnShowNum);
     getNumber()
 });
 btnShowNum.addEventListener('click',(e)=>{
-    ouputUl.innerHTML = '';
+    ouputUl.innerHTML = '';    
    btnDisable(e.target,btnGetNum);
-   let num = Number(outNum.textContent);
-   console.log(num);
+   let num = Number(outNum.textContent);  
     showNumber(num,ouputUl);
 });
